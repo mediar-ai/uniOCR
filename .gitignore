@@ -5,3 +5,5 @@ target/
 Cargo.lock
 
 # macos stuff 
+.DS_Store
+
