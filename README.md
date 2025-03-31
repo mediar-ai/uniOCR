@@ -4,6 +4,8 @@
 
 universal ocr engine for rust that works everywhere. supports native ocr on macos, windows, tesseract, and cloud providers.
 
+need a feature like NodeJS, HTTP example, etc.? open an issue or PR.
+
 ### features 🚀
 
 - **native ocr**
