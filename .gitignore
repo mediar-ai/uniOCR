@@ -1,0 +1,7 @@
+# rust stuff 
+target/
+
+# cargo stuff 
+Cargo.lock
+
+# macos stuff 
