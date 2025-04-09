@@ -36,7 +36,7 @@ reqwest = { version = "0.12.11", features = ["json"] }
 [dev-dependencies]
 tempfile = "3.3.0"
 criterion = { version = "0.5.1", features = ["async_tokio"] }
-strsim = "0.10.0"
+strsim = "0.11.1"
 memory-stats = "1.2.0"
 
 # websocket example
@@ -61,7 +61,7 @@ name = "screen_capture"
 path = "examples/screen_capture.rs"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows = { version = "0.58", features = [
+windows = { version = "0.61.1", features = [
   "Graphics_Imaging",
   "Media_Ocr",
   "Storage",
