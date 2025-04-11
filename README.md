@@ -110,7 +110,7 @@ benchmark results on m4 macbook pro max (images/second):
 | provider      | speed  | accuracy |
 |--------------|--------|----------|
 | macos vision | 3.2    | 90.0%    |
-| windows ocr  | tbd   | tbd    |
+| windows ocr  | 1.2   | 95.2%    |
 | tesseract    | tbd    | tbd    |
 | google cloud | tbd   | tbd    |
 
