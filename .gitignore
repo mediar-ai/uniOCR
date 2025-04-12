@@ -1,9 +1,10 @@
-# rust stuff 
+# rust stuff
 target/
 
-# cargo stuff 
+# cargo stuff
 Cargo.lock
 
-# macos stuff 
+# macos stuff
 .DS_Store
 
+.idea

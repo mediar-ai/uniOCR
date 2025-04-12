@@ -103,6 +103,7 @@ impl OcrEngine {
                     Ok(perform_ocr_tesseract(image, self.options.languages.clone()))
                 }
             }
+            _ => Err(anyhow::anyhow!("Invalid OCR provider")),
         }
     }
 
