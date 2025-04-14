@@ -30,7 +30,7 @@ need a feature like NodeJS, HTTP example, etc.? open an issue or PR.
 
 ```toml
 [dependencies]
-uniocr = { git = "https://github.com/mediar-ai/uniocr.git" }
+uni-ocr = { git = "https://github.com/mediar-ai/uniocr.git" }
 ```
 
 ```rust
