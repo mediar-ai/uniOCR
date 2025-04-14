@@ -71,7 +71,7 @@ let engine = OcrEngine::new(OcrProvider::Tesseract)?;
 ### advanced usage 🛠️
 
 ```rust
-use uniocr::{OcrEngine, OcrProvider, OcrOptions};
+use uni_ocr::{OcrEngine, OcrProvider, OcrOptions};
 
 // configure ocr options
 let options = OcrOptions::default()
