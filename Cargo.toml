@@ -69,7 +69,7 @@ windows = { version = "0.61.1", features = [
 ] }
 
 [target.'cfg(target_os = "macos")'.dependencies]
-cidre = { git = "https://github.com/mediar-ai/cidre.git", rev = "efb9e060c6f8edc48551365c2e80d3e8c6887433" }
+cidre = { git = "https://github.com/mediar-ai/cidre.git", rev = "efb9e060c6f8edc48551365c2e80d3e8c6887433", default-features = false, features = ["cf", "cg", "cv", "cm", "ns", "objc", "vn", "blocks", "macos_13_0"] }
 libc = "^0.2.168"
 url = "2.5.0"
 
