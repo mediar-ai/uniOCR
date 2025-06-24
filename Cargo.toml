@@ -69,7 +69,7 @@ windows = { version = "0.61.1", features = [
 ] }
 
 [target.'cfg(target_os = "macos")'.dependencies]
-cidre = { version = "0.5.0", path = "vendor/cidre/cidre", default-features = false, features = ["cf", "cg", "cv", "cm", "ns", "objc", "vn", "blocks", "macos_13_0"] }
+cidre = { git = "https://github.com/yury/cidre", rev = "c68b1e9", default-features = false, features = ["cf", "cg", "cv", "cm", "ns", "objc", "vn", "blocks", "macos_13_0"] }
 libc = "^0.2.168"
 url = "2.5.0"
 
