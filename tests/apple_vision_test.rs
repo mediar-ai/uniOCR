@@ -2,9 +2,8 @@
 #[cfg(test)]
 mod tests {
     use image::GenericImageView;
-    use screenpipe_core::Language;
-    use screenpipe_vision::perform_ocr_apple;
     use std::path::PathBuf;
+    use uni_ocr::{perform_ocr_apple, Language};
 
     #[tokio::test]
     async fn test_apple_native_ocr() {

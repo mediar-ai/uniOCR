@@ -1,0 +1,3 @@
+[submodule "vendor/cidre"]
+	path = vendor/cidre
+	url = https://github.com/yury/cidre

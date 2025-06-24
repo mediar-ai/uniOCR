@@ -55,7 +55,7 @@ async def read_ocr(payload: dict):
 #
 # Configure your "CustomOcrConfig" in Rust to point to http://localhost:8000/ocr
 
-# Clean up 
+# Clean up
 deactivate
 rm -rf venv app.py
 */
@@ -63,10 +63,8 @@ rm -rf venv app.py
 #[cfg(test)]
 mod tests {
     use image::GenericImageView;
-    use screenpipe_core::Language;
-    use screenpipe_vision::custom_ocr::{perform_ocr_custom, CustomOcrConfig};
-    use screenpipe_vision::utils::OcrEngine;
     use std::path::PathBuf;
+    use uni_ocr::{Credentials, Language, OcrEngine, OcrOptions, OcrProvider};
 
     #[tokio::test]
     #[ignore]
@@ -89,22 +87,18 @@ mod tests {
         println!("Image dimensions: {:?}", image.dimensions());
 
         // Configure our custom OCR engine.
-        let config = CustomOcrConfig {
+        let credentials = Credentials {
             api_url: "http://localhost:8000/ocr".to_string(),
             api_key: "".to_string(),
             timeout_ms: 5000,
         };
-        let ocr_engine = OcrEngine::Custom(config);
+
+        let engine = OcrEngine::new(OcrProvider::Custom { credentials })
+            .unwrap()
+            .with_options(OcrOptions::default().languages(vec![Language::English]));
 
         // Perform the custom OCR.
-        let (ocr_text, structured_data, confidence) = match ocr_engine {
-            OcrEngine::Custom(ref config) => {
-                perform_ocr_custom(&image, vec![Language::English], config)
-                    .await
-                    .expect("Custom OCR failed")
-            }
-            _ => panic!("Unexpected OCR engine"),
-        };
+        let (ocr_text, structured_data, confidence) = engine.recognize_image(&image).await.unwrap();
 
         println!("OCR text: {:?}", ocr_text);
         println!("Structured data: {:?}", structured_data);
@@ -135,21 +129,17 @@ mod tests {
         let image = image::open(&path).expect("Failed to open Chinese test image");
         println!("Image dimensions: {:?}", image.dimensions());
 
-        let config = CustomOcrConfig {
+        let credentials = Credentials {
             api_url: "http://localhost:8000/ocr".to_string(),
             api_key: "".to_string(),
             timeout_ms: 30000000,
         };
-        let ocr_engine = OcrEngine::Custom(config);
 
-        let (ocr_text, _, _) = match ocr_engine {
-            OcrEngine::Custom(ref config) => {
-                perform_ocr_custom(&image, vec![Language::Chinese], config)
-                    .await
-                    .expect("Custom OCR failed")
-            }
-            _ => panic!("Unexpected OCR engine"),
-        };
+        let engine = OcrEngine::new(OcrProvider::Custom { credentials })
+            .unwrap()
+            .with_options(OcrOptions::default().languages(vec![Language::Chinese]));
+
+        let (ocr_text, _, _) = engine.recognize_image(&image).await.unwrap();
 
         println!("OCR text: {:?}", ocr_text);
         assert!(

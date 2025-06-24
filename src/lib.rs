@@ -1,5 +1,5 @@
 use anyhow::Result;
-use custom_ocr::Credentials;
+pub use custom_ocr::Credentials;
 use image::DynamicImage;
 use std::time::Duration;
 
