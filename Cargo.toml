@@ -1,6 +1,6 @@
 [package]
 name = "uni-ocr"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["mediar-ai"]
 description = "Native OCR for MacOS, Windows, Linux"
 repository = "https://github.com/mediar-ai/uni-ocr"
