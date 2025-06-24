@@ -21,7 +21,7 @@ tokio = { version = "1.41.1", features = ["full"] }
 image = "0.25.2"
 
 # OCR
-rusty-tesseract = { git = "https://github.com/louis030195/rusty-tesseract.git", branch = "main" }
+rusty-tesseract = "1.1.10"
 
 anyhow = "1.0.86"
 
