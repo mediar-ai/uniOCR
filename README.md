@@ -1,6 +1,9 @@
 # uniocr 📸
 
+[![Crates.io](https://img.shields.io/crates/v/uni-ocr.svg)](https://crates.io/crates/uni-ocr)
+[![Docs.rs](https://docs.rs/uni-ocr/badge.svg)](https://docs.rs/uni-ocr)
 [![MIT/Apache-2.0](https://img.shields.io/badge/license-MIT%2FApache-blue.svg)](LICENSE)
+
 
 universal ocr engine for rust that works everywhere. supports native ocr on macos, windows, tesseract, and cloud providers.
 
