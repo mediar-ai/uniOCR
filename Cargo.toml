@@ -1,6 +1,6 @@
 [package]
 name = "uni-ocr"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["mediar-ai"]
 description = "Native OCR for MacOS, Windows, Linux"
 repository = "https://github.com/mediar-ai/uni-ocr"
@@ -69,7 +69,7 @@ windows = { version = "0.61.1", features = [
 ] }
 
 [target.'cfg(target_os = "macos")'.dependencies]
-cidre = { git = "https://github.com/yury/cidre", rev = "c68b1e9", default-features = false, features = ["cf", "cg", "cv", "cm", "ns", "objc", "vn", "blocks", "macos_13_0"] }
+cidre = { git = "https://github.com/yury/cidre", version = "0.9.0", default-features = false, features = ["cf", "cg", "cv", "cm", "ns", "objc", "vn", "blocks", "macos_13_0"] }
 libc = "^0.2.168"
 url = "2.5.0"
 
