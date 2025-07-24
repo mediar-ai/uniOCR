@@ -3,7 +3,7 @@ name = "uni-ocr"
 version = "0.1.5"
 authors = ["mediar-ai"]
 description = "Native OCR for MacOS, Windows, Linux"
-repository = "https://github.com/mediar-ai/uni-ocr"
+repository = "https://github.com/mediar-ai/uniOCR"
 license = "MIT"
 edition = "2021"
 
