@@ -2,25 +2,20 @@ use image::DynamicImage;
 use rusty_tesseract::{Args, DataOutput, Image};
 use std::collections::HashMap;
 
-use crate::{Language, TESSERACT_LANGUAGES};
+use crate::Language;
 
 pub fn perform_ocr_tesseract(
     image: &DynamicImage,
     languages: Vec<Language>,
 ) -> (String, String, Option<f64>) {
-    let language_string = match languages.is_empty() {
-        true => "eng".to_string(),
-        _ => TESSERACT_LANGUAGES
+    let language_string = if languages.is_empty() {
+        "eng".to_string()
+    } else {
+        languages
             .iter()
-            .filter_map(|(key, val)| {
-                if languages.iter().any(|l| l == val) {
-                    Some(key.to_string())
-                } else {
-                    None
-                }
-            })
+            .filter_map(|lang| lang.as_tesseract_code().map(|code| code.to_string()))
             .collect::<Vec<String>>()
-            .join("+"),
+            .join("+")
     };
     let args = Args {
         lang: language_string,

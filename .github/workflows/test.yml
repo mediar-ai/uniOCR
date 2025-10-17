@@ -12,7 +12,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            tesseract-install: sudo apt-get update && sudo apt-get install -y libleptonica-dev libtesseract-dev tesseract-ocr
+          - os: macos-latest
+            tesseract-install: brew install tesseract
+          - os: windows-latest
+            tesseract-install: winget install --id=UB-Mannheim.Tesseract -e --accept-package-agreements --accept-source-agreements
 
     steps:
       - uses: actions/checkout@v4
@@ -32,9 +38,8 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install tesseract for Linux
-        if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get update && sudo apt-get install -y libleptonica-dev libtesseract-dev tesseract-ocr
+      - name: Install Tesseract
+        run: ${{ matrix.tesseract-install }}
 
       - name: Run tests
         run: cargo test --all-features -- --nocapture 
