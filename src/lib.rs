@@ -69,8 +69,18 @@ impl OcrEngine {
         image: &DynamicImage,
     ) -> Result<(String, String, Option<f64>)> {
         match &self.provider {
-            #[cfg(target_os = "macos")]
-            OcrProvider::MacOS => Ok(perform_ocr_apple(image, &self.options.languages)),
+            OcrProvider::MacOS => {
+                #[cfg(target_os = "macos")]
+                {
+                    Ok(perform_ocr_apple(image, &self.options.languages))
+                }
+                #[cfg(not(target_os = "macos"))]
+                {
+                    Err(anyhow::anyhow!(
+                        "macOS OCR is not available on this platform"
+                    ))
+                }
+            }
             OcrProvider::Windows => {
                 #[cfg(target_os = "windows")]
                 {

@@ -18,7 +18,9 @@ jobs:
           - os: macos-latest
             tesseract-install: brew install tesseract
           - os: windows-latest
-            tesseract-install: winget install --id=UB-Mannheim.TesseractOCR  -e --accept-package-agreements --accept-source-agreements
+            tesseract-install: |
+              winget install --id=UB-Mannheim.TesseractOCR  -e --accept-package-agreements --accept-source-agreements
+              echo "C:\Program Files\Tesseract-OCR" >> $env:GITHUB_PATH
 
     steps:
       - uses: actions/checkout@v4
@@ -37,6 +39,10 @@ jobs:
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Install additional dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get update && sudo apt-get install -y pkg-config libdbus-1-dev libssl-dev libclang-dev libxcb1-dev libxrandr-dev libpipewire-0.3-dev libwayland-dev libegl-dev
 
       - name: Install Tesseract
         run: ${{ matrix.tesseract-install }}
