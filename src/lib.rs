@@ -6,6 +6,7 @@ use std::time::Duration;
 #[derive(Debug, Clone)]
 pub enum OcrProvider {
     Auto,
+    #[cfg(target_os = "macos")]
     MacOS,
     Windows,
     Tesseract,
