@@ -18,7 +18,9 @@ jobs:
           - os: macos-latest
             tesseract-install: brew install tesseract
           - os: windows-latest
-            tesseract-install: winget install --id=UB-Mannheim.TesseractOCR  -e --accept-package-agreements --accept-source-agreements
+            tesseract-install: |
+              winget install --id=UB-Mannheim.TesseractOCR  -e --accept-package-agreements --accept-source-agreements
+              echo "C:\Program Files\Tesseract-OCR" >> $env:GITHUB_PATH
 
     steps:
       - uses: actions/checkout@v4
